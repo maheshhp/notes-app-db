@@ -2,14 +2,10 @@ const Hapi = require('hapi');
 const routes = require('./routes');
 
 const server = new Hapi.Server();
-let portNo;
 
-if (process.env.NODE_ENV) {
-  portNo = process.env.PORT || 8080;
-}
 
 server.connection({
-  port: portNo,
+  port: 8090,
   host: 'localhost',
 });
 

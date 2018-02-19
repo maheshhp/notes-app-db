@@ -1,7 +1,7 @@
 module.exports = [
   {
     method: 'GET',
-    path: '/notes',
+    path: '/notes/all',
     handler: (request, response) => {
       response({
         statusCode: 200,
