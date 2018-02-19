@@ -8,13 +8,12 @@ module.exports = [
     path: '/notes/all',
     handler: (request, response) => {
       getNotesFromDB().then((noteObjects) => {
-        console.log(noteObjects);
         const formattedNoteObjects = [];
         noteObjects.forEach((noteObject) => {
           formattedNoteObjects.push({
-            noteId: noteObject.noteId,
+            noteKey: noteObject.noteKey,
             noteText: noteObject.noteText,
-            noteTitle: noteObject.noteText,
+            noteTitle: noteObject.noteTitle,
           });
         });
         response({

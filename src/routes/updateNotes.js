@@ -7,7 +7,7 @@ const updateNotesInDB = (noteObjectArray) => {
       dbInsertPromises.push(Models.Note.upsert({
         noteTitle: noteObject.noteTitle,
         noteText: noteObject.noteText,
-        noteId: noteObject.noteKey,
+        noteKey: noteObject.noteKey,
       }));
     }
   });
@@ -19,6 +19,7 @@ module.exports = [
     method: 'POST',
     path: '/notes/update',
     handler: (request, response) => {
+      console.log(request.payload);
       updateNotesInDB(request.payload).then((updateResponse) => {
         response({
           statusCode: 201,

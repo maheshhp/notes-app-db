@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
   const Note = sequelize.define('Note', {
-    noteId: DataTypes.INTEGER,
+    noteKey: DataTypes.INTEGER,
     noteTitle: DataTypes.STRING,
     noteText: DataTypes.STRING,
   }, {
