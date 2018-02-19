@@ -8,6 +8,7 @@ module.exports = [
     path: '/notes/all',
     handler: (request, response) => {
       getNotesFromDB().then((noteObjects) => {
+        console.log(noteObjects);
         const formattedNoteObjects = [];
         noteObjects.forEach((noteObject) => {
           formattedNoteObjects.push({
@@ -16,7 +17,6 @@ module.exports = [
             noteTitle: noteObject.noteText,
           });
         });
-        console.log(formattedNoteObjects);
         response({
           statusCode: 200,
           message: `${formattedNoteObjects.length} notes fetched`,

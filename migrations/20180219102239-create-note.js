@@ -3,10 +3,12 @@ module.exports = {
     id: {
       allowNull: false,
       autoIncrement: true,
-      primaryKey: true,
       type: Sequelize.INTEGER,
     },
     noteId: {
+      allowNull: false,
+      primaryKey: true,
+      autoIncrement: false,
       type: Sequelize.INTEGER,
     },
     noteTitle: {
