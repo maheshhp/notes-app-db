@@ -4,11 +4,23 @@ const updateNotesInDB = (noteObjectArray) => {
   const dbInsertPromises = [];
   JSON.parse(noteObjectArray).forEach((noteObject) => {
     if (noteObject !== null) {
-      dbInsertPromises.push(Models.Note.upsert({
+      dbInsertPromises.push(Models.Note.findOrCreate({
+        where: {
+          noteKey: noteObject.noteKey,
+        },
+        defaults: {
+          noteTitle: noteObject.noteTitle,
+          noteText: noteObject.noteText,
+          noteKey: noteObject.noteKey,
+        },
+      }).then(() => Models.Note.update({
         noteTitle: noteObject.noteTitle,
         noteText: noteObject.noteText,
-        noteKey: noteObject.noteKey,
-      }));
+      }, {
+        where: {
+          noteKey: noteObject.noteKey,
+        },
+      })));
     }
   });
   return Promise.all(dbInsertPromises);
